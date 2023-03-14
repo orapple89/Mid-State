@@ -1,3 +1,48 @@
+export var game = [
+  {
+    numberOfPlayers: 2,
+    round: 1,
+    turn: 1
+  }
+];
+
+export var players = [
+  {
+    members: [
+      {
+        playerNum: 1,
+        userName: "Available",
+        score: 0,
+        numCards: 0
+      },
+      {
+        playerNum: 2,
+        userName: "Available",
+        score: 0,
+        numCards: 0
+      },
+      {
+        playerNum: 3,
+        userName: "Available",
+        score: 0,
+        numCards: null
+      },
+      {
+        playerNum: 4,
+        userName: "Available",
+        score: 0,
+        numCards: null
+      },
+      {
+        playerNum: 5,
+        userName: "Available",
+        score: 0,
+        numCards: null
+      }
+    ]
+  }
+];
+
 export var cards = [
   {
     cardNum: 1,
