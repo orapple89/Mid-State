@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import "./app.css";
 import { cards } from "/public/cards.js";
 
-function App() {
-
-
+function ShuffleDeck() {
   var ctr, k; //counters
   var cardDup;
   const [cardOrder, setCardOrder] = useState([]);
@@ -71,6 +69,14 @@ function App() {
         </li>
       ))}
       )
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="App">
+      <ShuffleDeck />
     </div>
   );
 }
