@@ -3,12 +3,13 @@ import "./app.css";
 import { cards } from "/public/cards.js";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [sortType, setSortType] = useState("cardNumber");
+
 
   var ctr, k; //counters
   var cardDup;
   const [cardOrder, setCardOrder] = useState([]);
+  const [data, setData] = useState([]);
+  const [sortType, setSortType] = useState("cardNumber");
 
   //SET CARD ORDER
   function handleClick() {
