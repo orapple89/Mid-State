@@ -1,14 +1,12 @@
 //import { useState, useEffect } from "react";
 import "./app.css";
 //import { cards } from "/public/cards.js";
-import { ShuffleDeck } from "./shuffle.js";
-import { DealCards } from "./deal.js";
+import { SetUp } from "./setUp.js";
 
 function App() {
   return (
     <div className="App">
-      <ShuffleDeck />
-      <DealCards />
+      <SetUp />
     </div>
   );
 }
