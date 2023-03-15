@@ -6,7 +6,7 @@ import { game } from "/public/cards.js";
 export function SetUp() {
   var ctr, k, ctr2; //counters
   var cardDup;
-  var player1Ctr = players[0].playerNum;
+  var player1Ctr = 1; //players[0].playerNum;
   var player2Ctr = players[1].playerNum;
   //var maxCards = 4;
 
@@ -30,20 +30,21 @@ export function SetUp() {
           }
         }
       } while (cardDup === 1);
-      setCardOrder(ctr);
+      setCardOrder();
     }
     //SET PLAYER#
+
     for (ctr2 = 0; ctr2 < 8; ctr2++) {
       if (
-        cards[ctr2].cardOrder === player1Ctr //&&
-        //players[0].numCards <= game.maxCards
+        cards[ctr2].cardOrder === 1 && //player1Ctr &&
+        players[0].numCards <= game.maxCards
       ) {
         cards[ctr2].player = 1;
         player1Ctr = player1Ctr + game.numberOfPlayers;
         players.numCards = players.numCards + 1;
       } else if (
-        cards[ctr2].cardOrder === player2Ctr //&&
-        //players.numCards <= game.maxCards
+        cards[ctr2].cardOrder === player2Ctr &&
+        players.numCards <= game.maxCards
       ) {
         cards[ctr2].player = 2;
         player2Ctr = player2Ctr + game.numberOfPlayers;
@@ -51,7 +52,7 @@ export function SetUp() {
       }
       setPlayer(ctr2);
     } //end deal
-  } //end shufle and deal click
+  } //end shuffle and deal click
 
   useEffect(() => {
     const sortArray = (type) => {

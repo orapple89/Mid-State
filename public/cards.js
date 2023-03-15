@@ -1,11 +1,9 @@
-export var game = [
-  {
-    numberOfPlayers: 2,
-    round: 1,
-    turn: 1,
-    maxcards: 0
-  }
-];
+export var game = {
+  numberOfPlayers: 2,
+  round: 1,
+  turn: 1,
+  maxCards: 4
+};
 
 export var players = [
   {
@@ -44,7 +42,7 @@ export var cards = [
   {
     cardNum: 1,
     cardOrder: null,
-    player: 1,
+    player: null,
     cardDeck: true,
     cardHand: false,
     cardPlayed: false,
@@ -56,7 +54,7 @@ export var cards = [
   {
     cardNum: 2,
     cardOrder: null,
-    player: 5,
+    player: null,
     cardDeck: true,
     cardHand: false,
     cardPlayed: false,
@@ -80,7 +78,7 @@ export var cards = [
   {
     cardNum: 4,
     cardOrder: null,
-    player: 2,
+    player: null,
     cardDeck: true,
     cardHand: false,
     cardPlayed: false,
@@ -92,7 +90,7 @@ export var cards = [
   {
     cardNum: 5,
     cardOrder: null,
-    player: 100,
+    player: null,
     cardDeck: true,
     cardHand: false,
     cardPlayed: false,
@@ -116,7 +114,7 @@ export var cards = [
   {
     cardNum: 7,
     cardOrder: null,
-    player: 1,
+    player: null,
     cardDeck: true,
     cardHand: false,
     cardPlayed: false,
