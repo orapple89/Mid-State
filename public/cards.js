@@ -1,8 +1,14 @@
 export var game = {
-  numberOfPlayers: 2,
+  numberPlayers: 2,
   round: 1,
   turn: 1,
-  maxCards: 4
+  maxCards: 4,
+  cardsDealt: 0,
+  player1Ctr: 1,
+  player2Ctr: 2,
+  player3Ctr: null,
+  player4Ctr: null,
+  player5Ctr: null
 };
 
 export var players = [
@@ -37,7 +43,6 @@ export var players = [
     numCards: 0
   }
 ];
-
 export var cards = [
   {
     cardNum: 1,

@@ -7,15 +7,42 @@ export function SetUp() {
   var ctr, k, ctr2; //counters
   var cardDup;
   var player1Ctr = 1; //players[0].playerNum;
-  var player2Ctr = players[1].playerNum;
+  var player2Ctr = 2;
   //var maxCards = 4;
 
-  const [card, setCardOrder] = useState([]);
+  const [order, setCardOrder] = useState([]);
   const [data, setData] = useState([]);
-  const [sortType, setSortType] = useState("cardNumber");
+  const [sortType, setSortType] = useState("cardOrder");
   const [player, setPlayer] = useState([]);
 
+  function setCardNumber() {
+    switch (game.numberPlayers) {
+      default:
+        break;
+      case 2:
+        game.maxCards = 4; // update to 10 in game
+        break;
+      case 3:
+        game.maxCards = 27;
+        game.player3Ctr = 3;
+        break;
+      case 4:
+        game.maxCards = 32;
+        game.player3Ctr = 3;
+        game.player4Ctr = 4;
+        break;
+      case 5:
+        game.maxCards = 35;
+        game.player3Ctr = 3;
+        game.player4Ctr = 4;
+        game.player5Ctr = 5;
+        break;
+    }
+  }
+
   function handleClick() {
+    setCardNumber();
+
     //SET CARD ORDER
     for (ctr = 0; ctr < 8; ctr++) {
       //need to reset to 108
@@ -30,28 +57,33 @@ export function SetUp() {
           }
         }
       } while (cardDup === 1);
-      setCardOrder();
+      setCardOrder(ctr);
     }
     //SET PLAYER#
 
     for (ctr2 = 0; ctr2 < 8; ctr2++) {
       if (
-        cards[ctr2].cardOrder === 1 && //player1Ctr &&
-        players[0].numCards <= game.maxCards
+        cards[ctr2].cardOrder === player1Ctr &&
+        game.cardsDealt <= game.maxCards + 1
       ) {
         cards[ctr2].player = 1;
-        player1Ctr = player1Ctr + game.numberOfPlayers;
-        players.numCards = players.numCards + 1;
+        player1Ctr = player1Ctr + game.numberPlayers;
+        ctr2 = -1;
+        players[0].numCards += 1;
+        game.cardsDealt += 1;
       } else if (
         cards[ctr2].cardOrder === player2Ctr &&
-        players.numCards <= game.maxCards
+        game.cardsDealt <= game.maxCards + 1
       ) {
         cards[ctr2].player = 2;
-        player2Ctr = player2Ctr + game.numberOfPlayers;
-        players.numCards = players.numCards + 1;
+        player2Ctr = player2Ctr + game.numberPlayers;
+        ctr2 = -1;
+        players.numCards = players.numCards += 1;
+        game.cardsDealt += 1;
       }
-      setPlayer(ctr2);
     } //end deal
+    //setCardOrder();
+    setPlayer();
   } //end shuffle and deal click
 
   useEffect(() => {
@@ -95,9 +127,18 @@ export function SetUp() {
       ))}
       {data.map((card) => (
         <li key={card.cardNum}>
-          {card.cardNum}, {card.cardName}, {card.cardOrder}, {card.player}
+          {card.cardNum}, {card.cardName}, {card.cardOrder},{card.player}
         </li>
       ))}
+      {players.map((player) => (
+        <li key={player.playerNum}>
+          {player.playerNum}, {player.numCards}
+        </li>
+      ))}
+
+      <div>
+        {game.maxCards}, {game.numberPlayers}
+      </div>
     </>
   );
 }
