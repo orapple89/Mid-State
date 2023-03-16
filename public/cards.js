@@ -1,5 +1,5 @@
 export var game = {
-  numberPlayers: 2,
+  numberPlayers: 5,
   round: 1,
   turn: 1,
   maxCards: 8,

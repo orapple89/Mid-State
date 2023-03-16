@@ -27,12 +27,12 @@ export function SetUp() {
         game.player3Ctr = 3;
         break;
       case 4:
-        game.maxCards = 32;
+        game.maxCards = 8;
         game.player3Ctr = 3;
         game.player4Ctr = 4;
         break;
       case 5:
-        game.maxCards = 35;
+        game.maxCards = 8;
         game.player3Ctr = 3;
         game.player4Ctr = 4;
         game.player5Ctr = 5;
@@ -82,15 +82,25 @@ export function SetUp() {
         ctr2 = -1;
         players[1].numCards += 1;
         game.cardsDealt += 1;
+      } else if (cards[ctr2].cardOrder === game.player3Ctr) {
+        cards[ctr2].player = 3;
+        game.player3Ctr = game.player3Ctr + game.numberPlayers;
+        ctr2 = -1;
+        players[2].numCards = players[2].numCards += 1;
+        game.cardsDealt += 1;
+      } else if (cards[ctr2].cardOrder === game.player4Ctr) {
+        cards[ctr2].player = 4;
+        game.player4Ctr = game.player4Ctr + game.numberPlayers;
+        ctr2 = -1;
+        players[3].numCards = players[3].numCards += 1;
+        game.cardsDealt += 1;
+      } else if (cards[ctr2].cardOrder === game.player5Ctr) {
+        cards[ctr2].player = 5;
+        game.player5Ctr = game.player5Ctr + game.numberPlayers;
+        ctr2 = -1;
+        players[4].numCards = players[4].numCards += 1;
+        game.cardsDealt += 1;
       }
-      /* 
-        else if (cards[ctr2].cardOrder === game.player3Ctr) {
-          cards[ctr2].player = 3;
-          game.player3Ctr = game.player3Ctr + game.numberPlayers;
-          ctr2 = -1;
-          players[3].numCards = players[3].numCards += 1;
-          game.cardsDealt += 1;
-        }*/
       //} //maxCards check good
     } //end deal
     //setCardOrder();
