@@ -6,8 +6,8 @@ import { game } from "/public/cards.js";
 export function SetUp() {
   var ctr, k, ctr2; //counters
   var cardDup;
-  var player1Ctr = 1; //players[0].playerNum;
-  var player2Ctr = 2;
+  //var player1Ctr = 1; //players[0].playerNum;
+  //var player2Ctr = 2;
   //var maxCards = 4;
 
   const [order, setCardOrder] = useState([]);
@@ -20,10 +20,10 @@ export function SetUp() {
       default:
         break;
       case 2:
-        game.maxCards = 4; // update to 10 in game
+        game.maxCards = 8; // update to 20 in game
         break;
       case 3:
-        game.maxCards = 27;
+        game.maxCards = 8; // update to 27 in game
         game.player3Ctr = 3;
         break;
       case 4:
@@ -59,28 +59,39 @@ export function SetUp() {
       } while (cardDup === 1);
       setCardOrder(ctr);
     }
+
     //SET PLAYER#
 
     for (ctr2 = 0; ctr2 < 8; ctr2++) {
+      //if (game.cardsDealt <= game.maxCards + 1) {
       if (
-        cards[ctr2].cardOrder === player1Ctr &&
+        cards[ctr2].cardOrder === game.player1Ctr &&
         game.cardsDealt <= game.maxCards + 1
       ) {
         cards[ctr2].player = 1;
-        player1Ctr = player1Ctr + game.numberPlayers;
+        game.player1Ctr = game.player1Ctr + game.numberPlayers;
         ctr2 = -1;
         players[0].numCards += 1;
         game.cardsDealt += 1;
       } else if (
-        cards[ctr2].cardOrder === player2Ctr &&
+        cards[ctr2].cardOrder === game.player2Ctr &&
         game.cardsDealt <= game.maxCards + 1
       ) {
         cards[ctr2].player = 2;
-        player2Ctr = player2Ctr + game.numberPlayers;
+        game.player2Ctr = game.player2Ctr + game.numberPlayers;
         ctr2 = -1;
-        players.numCards = players.numCards += 1;
+        players[1].numCards += 1;
         game.cardsDealt += 1;
       }
+      /* 
+        else if (cards[ctr2].cardOrder === game.player3Ctr) {
+          cards[ctr2].player = 3;
+          game.player3Ctr = game.player3Ctr + game.numberPlayers;
+          ctr2 = -1;
+          players[3].numCards = players[3].numCards += 1;
+          game.cardsDealt += 1;
+        }*/
+      //} //maxCards check good
     } //end deal
     //setCardOrder();
     setPlayer();
@@ -137,7 +148,8 @@ export function SetUp() {
       ))}
 
       <div>
-        {game.maxCards}, {game.numberPlayers}
+        {game.maxCards},{game.cardsDealt},{game.player1Ctr},{game.player2Ctr},
+        {game.player3Ctr},{game.numberPlayers}
       </div>
     </>
   );
