@@ -2,7 +2,7 @@ export var game = {
   numberPlayers: 5,
   round: 1,
   turn: 1,
-  maxCards: 8,
+  maxCards: 6,
   cardsDealt: 0,
   player1Ctr: 1,
   player2Ctr: 2,
